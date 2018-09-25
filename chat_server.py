@@ -154,7 +154,7 @@ start_listen()
 local_ip = get_my_ip()
 clients_list_lock = threading.Lock()
 SERVER.listen(50)  # Listens for 50 connections at max.
-atexit.register(close_server, args=(clients_list_lock,))
+atexit.register(close_server, clients_list_lock=clients_list_lock)
 print("Server is listnening on %s" % local_ip)
 ACCEPT_THREAD = threading.Thread(
     target=accept_incoming_connections,
