@@ -85,18 +85,15 @@ def send_msg():
             client_socket.send_new_msg(new_msg, chat_socket)
             text_input.delete(1.0, 'end')
         else:
-            print('client send {quit}')
             exit()
 
 
 def handle_exit():
-    print('Handle exit')
     quit_msg = create_json_msg(user_name=nickName, text='{quit}\n')
     client_socket.send_new_msg(quit_msg, chat_socket)
     try:
         window.destroy()
     except Exception:
-        print('window is allrrady close')
         # window allready has been closed
         pass
 
