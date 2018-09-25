@@ -28,9 +28,9 @@ def send_new_msg(msg, soc):
         if msg['text'] == "{quit}\n":
             soc.close()
     except BrokenPipeError as e:  # Possibly client has left the chat.
-            print('socket is closed')
-            # Could be handle by exit(0)
-            # or produce a msg to the screen(text = lost connection)
+        print('socket is closed')
+        # Could be handle by exit(0)
+        # or produce a msg to the screen(text = lost connection)
 
 
 def create_socket(address):

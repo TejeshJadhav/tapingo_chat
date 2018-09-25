@@ -9,7 +9,11 @@ import time
 
 def log(msg):
     current_time = time.strftime("%H:%M:%S", time.localtime())
-    print('%s:   %s :%s ' % (current_time, threading.current_thread().getName(), msg))
+    print(
+        '%s:   %s :%s ' %
+        (current_time,
+         threading.current_thread().getName(),
+         msg))
 
 
 def accept_incoming_connections(clients_list_lock):
@@ -19,9 +23,13 @@ def accept_incoming_connections(clients_list_lock):
             log("%s:%s has connected." % client_address[:])
             addresses[client] = client_address
             threading.Thread(
-                target=handle_client, args=(
-                    client, clients_list_lock,), name='client %s:%s thread' %
-                                                      client_address[:]).start()
+                target=handle_client,
+                args=(
+                    client,
+                    clients_list_lock,
+                ),
+                name='client %s:%s thread' %
+                client_address[:]).start()
         except Exception as err:
             log('error in accept_incoming_connections: %s' % err)
             break

@@ -80,13 +80,14 @@ def send_hello(chat_socket, nickName):
 def send_msg():
     new_msg_text = text_input.get(1.0, 'end')
     if nickName is not None and new_msg_text is not None:
-        new_msg = create_json_msg(user_name=nickName,text=new_msg_text)
+        new_msg = create_json_msg(user_name=nickName, text=new_msg_text)
         if new_msg_text != '{quit}\n':
             client_socket.send_new_msg(new_msg, chat_socket)
             text_input.delete(1.0, 'end')
         else:
             print('client send {quit}')
             exit()
+
 
 def handle_exit():
     print('Handle exit')
@@ -98,6 +99,7 @@ def handle_exit():
         print('window is allrrady close')
         # window allready has been closed
         pass
+
 
 ### GUI Initializing ###
 window = T.Tk()
@@ -139,8 +141,6 @@ text_input.config(
 send_btn = T.Button(new_msg_frame, text='SEND', command=send_msg)
 send_btn.config(width=6, height=4, padx=10)
 send_btn.pack(padx=20)
-
-
 
 
 ### start() ###
